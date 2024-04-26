@@ -13,8 +13,8 @@
 <script>
 export default {
     async created() {
-        this.sale_items = await useAsyncData(() => queryContent('/products').where({ onSale: true }).findOne());
-        this.products = await useAsyncData(() => queryContent('/products').findOne());
+        // this.sale_items = await useAsyncData(() => queryContent('/products').where({ onSale: true }).findOne());
+        // this.products = await useAsyncData(() => queryContent('/products').findOne());
 
     },
     data() {

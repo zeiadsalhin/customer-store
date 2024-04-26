@@ -38,13 +38,11 @@
             </div>
         </v-carousel-item>
     </v-carousel>
-    <button @click="fetchProducts">fetch</button>
 </template>
 
 <script>
 import Swal from 'sweetalert2'
-const supabase = useSupabaseClient()
-const user = useSupabaseUser()
+
 export default {
     props: {
         // sale_items: Array,
@@ -56,13 +54,13 @@ export default {
         }
     },
     mounted() {
-        setTimeout(() => {
-            this.fetchProducts();
-        }, 10000);
+        this.fetchProducts();
     },
     methods: {
 
         async fetchProducts() {
+            const supabase = useSupabaseClient()
+            const user = useSupabaseUser()
             try {
                 const { data, error } = await supabase.from('Products').select('*');
 
