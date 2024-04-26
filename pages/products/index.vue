@@ -1,6 +1,7 @@
 <template>
     <div class="mt-20">
         <!-- <Nav /> -->
+        <h1 class="text-3xl p-5 ">Products</h1>
         <v-container v-if="products" class="w-1/2">
             <div v-if="products" class="w-11/12 justify-center flex flex-wrap gap-4">
                 <div v-for="(p, i) in products" :key="`product${p.id}-${i}`" class="w-fit">
