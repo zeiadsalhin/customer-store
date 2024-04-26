@@ -8,13 +8,13 @@ onMounted(async () => {
         const { data, error } = await supabase.auth.getSession(); // get session status from local cookies
 
         if (data.session.user.user_metadata.role == 'admin') {
-            dataview.value = true
+            navigateTo("/admin")
             // name.value = data.session.user.identities[0].identity_data.first_name // Display registered username
             // dataview.value = data.session.user // JSON Body response
             // console.log(data.session.user.user_metadata.role)
             console.log('this user is admin')
         } else {
-            navigateTo("/account")
+            dataview.value = true
             console.log('this user is regular')
         }
     } catch (error) {
@@ -44,8 +44,7 @@ async function LogOut() {
 </script>
 <template>
     <div v-if="dataview" class="mt-32">
-        admin main page
-        <!-- <button @click="makeAdmin">Make Admin</button> -->
+        User page
         <button @click="LogOut">Logout</button>
     </div>
 </template>

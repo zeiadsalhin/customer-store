@@ -4,6 +4,7 @@ const user = useSupabaseUser()
 const errMsg = ref()
 const email = ref('')
 const password = ref('')
+const dataview = ref()
 
 const signIn = async () => {
     const { error } = await supabase.auth.signInWithPassword({
@@ -19,6 +20,8 @@ watch(user, () => {
     if (user.value) {
         // Redirect to protected page
         return navigateTo('/')
+    } else {
+        dataview.value = true
     }
 }, { immediate: true })
 </script>
@@ -26,7 +29,8 @@ watch(user, () => {
     <div>
         <!--Login Form Body-->
         <!--will only render when Authenticated-->
-        <div class="p-1 md:p-5 md:my-20 mt-32 flex-col justify-center mx-auto w-11/12 h-fit shadow-2xl rounded-md">
+        <div v-if="dataview"
+            class="p-1 md:p-5 md:my-20 mt-32 flex-col justify-center mx-auto w-11/12 h-fit shadow-2xl rounded-md">
             <h1 class="text-3xl md:text-5xl text-center font-bold p-5">Log in</h1>
 
             <div class="w-1/4 h-1 mt-5 rounded-xl mx-auto bg-gray-600 dark:bg-gray-900"></div>

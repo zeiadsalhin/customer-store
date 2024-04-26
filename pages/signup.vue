@@ -6,17 +6,17 @@ const errMsg = ref()
 const displayname = ref('')
 const email = ref('')
 const password = ref('')
-
+const dataview = ref()
 async function signUpNewUser() { // Registration new user
     try {
         const { data, error } = await supabase.auth.signUp({
-            role: 'admin',
             email: email.value,
             password: password.value,
             options: {
                 data: {
                     first_name: displayname.value,
                     // last_name: 'second name',
+                    // role: 'user',
                 },
             }
         })
@@ -44,6 +44,8 @@ watch(user, () => {
     if (user.value) {
         // Redirect to protected page
         return navigateTo('/')
+    } else {
+        dataview.value = true
     }
 }, { immediate: true })
 </script>
@@ -51,7 +53,7 @@ watch(user, () => {
     <div>
         <!--Form Body-->
         <!--will only render when not Authenticated-->
-        <div
+        <div v-if="dataview"
             class="p-1 md:p-10 1my-5 mt-32 flex-col justify-center mx-auto h-fit w-11/12 bg-zinc-100 dark:bg-zinc-900 rounded-md shadow-inner">
             <h1 class="text-3xl md:text-5xl text-center font-bold p-2">Sign Up</h1>
             <div class="w-1/4 h-1 mt-5 rounded-xl mx-auto bg-gray-600 dark:bg-gray-900"></div>
