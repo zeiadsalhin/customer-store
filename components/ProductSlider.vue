@@ -2,7 +2,7 @@
     <v-slide-group v-if="products">
         <v-slide-item v-for="(p, i) in products" :key="i">
             <v-card :to="`/products/${p.id}`" color="surface" width="300" class="m-5">
-                <v-img height="200" :src="p.src" cover>
+                <v-img height="200" :src="p.image" cover>
                     <template #placeholder>
                         <v-row class="fill-height" justify="center" align="center">
                             <v-progress-circular width="2" size="100" color="primary"
@@ -12,7 +12,7 @@
                 </v-img>
                 <v-card-title class="text-md-body-1 font-weight-bold">{{
                     p.name
-                    }}</v-card-title>
+                }}</v-card-title>
                 <v-card-subtitle class="primary--text pb-3">
                     ${{ p.price }}
                 </v-card-subtitle>
@@ -38,6 +38,9 @@
 
 </template>
 <script>
+import Swal from 'sweetalert2'
+const supabase = useSupabaseClient()
+const user = useSupabaseUser()
 export default {
     props: {
         products: Array,
@@ -45,44 +48,27 @@ export default {
     data() {
         return {
             // products: null,
-            products: [
-                {
-                    id: 1,
-                    name: "Silky Smooth Beats",
-                    price: 20000,
-                    tags: ["Headphone", "People"],
-                    src: 'https://images.pexels.com/photos/577769/pexels-photo-577769.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                },
-                {
-                    id: 2,
-                    name: "Lady Luck Is Smiling",
-                    price: 10000,
-                    tags: ["Perfume", "Women"],
-                    src: 'https://images.pexels.com/photos/6062560/pexels-photo-6062560.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                },
-                {
-                    id: 3,
-                    name: "Green Nike Zoom",
-                    price: 30000,
-                    tags: ["Nike", "Men"],
-                    src: 'https://images.pexels.com/photos/1456706/pexels-photo-1456706.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                },
-                {
-                    id: 4,
-                    name: "New Home Living Room Set",
-                    price: 50000,
-                    tags: ["Home", "Pretty"],
-                    src: 'https://images.pexels.com/photos/1571459/pexels-photo-1571459.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                },
-                {
-                    id: 5,
-                    name: "Classic Man Watch",
-                    price: 50500,
-                    tags: ["Watch", "Men"],
-                    src: 'https://images.pexels.com/photos/3210711/pexels-photo-3210711.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                },
-            ],
+            products: null,
         }
+    },
+    mounted() {
+        setTimeout(() => {
+            this.fetchProducts();
+        }, 1000);
+    },
+    methods: {
+        async fetchProducts() {
+            try {
+                const { data, error } = await supabase.from('Products').select();
+
+                console.log('Products:', data);
+                this.products = data
+
+            } catch (error) {
+                console.error('Error fetching products:', error.message);
+            }
+        },
+
     },
 }
 </script>

@@ -58,7 +58,7 @@ export default {
     mounted() {
         setTimeout(() => {
             this.fetchProducts();
-        }, 1000);
+        }, 10000);
     },
     methods: {
 
