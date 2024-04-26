@@ -3,13 +3,14 @@ import Swal from 'sweetalert2'
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
 const dataview = ref()
+const name = ref()
 onMounted(async () => {
     try {
         const { data, error } = await supabase.auth.getSession(); // get session status from local cookies
 
         if (data.session.user.user_metadata.role == 'admin') {
             navigateTo("/admin")
-            // name.value = data.session.user.identities[0].identity_data.first_name // Display registered username
+            name.value = data.session.user.identities[0].identity_data.first_name // Display registered username
             // dataview.value = data.session.user // JSON Body response
             // console.log(data.session.user.user_metadata.role)
             console.log('this user is admin')
@@ -45,6 +46,7 @@ async function LogOut() {
 <template>
     <div v-if="dataview" class="mt-32">
         User page
+        <p class="font-semibold">Welcome, {{ name }}</p>
         <button @click="LogOut">Logout</button>
     </div>
 </template>

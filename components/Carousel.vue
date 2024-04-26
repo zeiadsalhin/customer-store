@@ -1,6 +1,6 @@
 <template>
     <v-carousel height="80vh" hide-delimiter-background>
-        <v-carousel-item v-if="items" v-for="(item, i) in items" :key="i" :src="item.src" cover>
+        <v-carousel-item v-if="items" v-for="(item, i) in items" :key="i" :src="item.image" cover>
             <v-img height="100vh">
                 <v-container class="fill-height mt-32">
                     <v-row dense>
@@ -38,9 +38,13 @@
             </div>
         </v-carousel-item>
     </v-carousel>
+    <button @click="fetchProducts">fetch</button>
 </template>
 
 <script>
+import Swal from 'sweetalert2'
+const supabase = useSupabaseClient()
+const user = useSupabaseUser()
 export default {
     props: {
         // sale_items: Array,
@@ -48,35 +52,31 @@ export default {
     data() {
         return {
             sale_items: true,
-            items: [
-                {
-                    id: 1,
-                    name: "Silky Smooth Beats",
-                    price: 20000,
-                    src: 'https://images.pexels.com/photos/577769/pexels-photo-577769.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                },
-                {
-                    id: 2,
-                    name: "Lady Luck Is Smiling",
-                    price: 3500,
-                    src: 'https://images.pexels.com/photos/6062560/pexels-photo-6062560.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                },
-                {
-                    id: 3,
-                    name: "Green Nike Zoom",
-                    price: 10500,
-                    src: 'https://images.pexels.com/photos/1456706/pexels-photo-1456706.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                },
-                {
-                    id: 4,
-                    name: "New Home Living Room Set",
-                    price: 100500,
-                    src: 'https://images.pexels.com/photos/1571459/pexels-photo-1571459.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                },
-            ],
+            items: '',
         }
     },
+    mounted() {
+        setTimeout(() => {
+            this.fetchProducts();
+        }, 1000);
+    },
+    methods: {
+
+        async fetchProducts() {
+            try {
+                const { data, error } = await supabase.from('Products').select('*');
+
+                console.log('Products:', data);
+                this.items = data
+
+            } catch (error) {
+                console.error('Error fetching products:', error.message);
+            }
+        },
+
+    },
 }
+
 </script>
 
 <style></style>
