@@ -9,7 +9,7 @@ onMounted(async () => {
     try {
         const { data, error } = await supabase.auth.getSession(); // get session status from local cookies
 
-        if (data.session.user.user_metadata.role == 'admin') {
+        if (data.session.user.user_metadata.role == 'admin') {  // access only for admins
             dataview.value = true
             name.value = data.session.user.identities[0].identity_data.first_name // Display registered username
             console.log('this user is admin')
@@ -41,57 +41,6 @@ async function LogOut() {
         console.log(error)
     }
 }
-
-
-// //get data
-// const fetchProducts = async () => {
-//     try {
-//         const { data, error } = await supabase.from('Products').select('*');
-//         if (error) {
-//             console.error('Error fetching products:', error.message);
-//         } else {
-//             console.log('Products:', data);
-//         }
-//     } catch (error) {
-//         console.error('Error fetching products:', error.message);
-//     }
-// };
-
-// // delete data
-// const DeleteProduct = async () => {
-//     try {
-//         const { error } = await supabase
-//             .from('Products')
-//             .delete()
-//             .eq('name', 'Bahrain')
-//         if (error) {
-//             console.error('Error delete products:', error.message);
-//         } else {
-//             console.log('Success');
-//         }
-//     } catch (error) {
-//         console.error('Error delete products:', error.message);
-//     }
-// };
-
-// //update data
-// const UpdateProduct = async () => {
-//     try {
-//         const { error } = await supabase
-//             .from('Products')
-//             .update({ name: 'Australia' })
-//             .eq('id', 2)
-//         if (error) {
-//             console.error('Error update products:', error.message);
-//         } else {
-//             console.log('Success');
-//         }
-//     } catch (error) {
-//         console.error('Error update products:', error.message);
-//     }
-// };
-
-
 </script>
 <template>
     <div v-if="dataview" class="mt-20 md:w-1/2 bg-zinc-900 p-10 text-center mx-auto text-white">

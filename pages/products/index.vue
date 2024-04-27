@@ -1,6 +1,5 @@
 <template>
     <div class="mt-20">
-        <!-- <Nav /> -->
         <h1 class="text-3xl p-5 ">Products</h1>
         <v-container v-if="products" class="w-1/2">
             <div v-if="products" class="w-11/12 justify-center flex flex-wrap gap-4">
@@ -17,7 +16,7 @@
                             </v-img>
                             <v-card-title class="text-md-body-1 font-weight-bold">{{
                                 p.name
-                                }}</v-card-title>
+                            }}</v-card-title>
                             <v-card-subtitle class="primary--text pb-3">
                                 ${{ p.price }}
                             </v-card-subtitle>
@@ -49,13 +48,8 @@
 
 
 export default {
-    async created() {
-        // this.products = await this.$content("products").fetch();
-        // this.categories = await this.$content("category").fetch();
-    },
     data() {
         return {
-            // products: true,
             categories: null,
             products: null,
         };
@@ -70,7 +64,7 @@ export default {
             try {
                 const { data, error } = await supabase.from('Products').select();
 
-                console.log('Products:', data);
+                // console.log('Products:', data);
                 this.products = data
 
             } catch (error) {

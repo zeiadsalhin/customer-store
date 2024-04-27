@@ -3,7 +3,6 @@ import Swal from 'sweetalert2'
 export const useMainStore = defineStore('main', {
   state: () => ({
     items: [],
-    discountedPrice: null,
     orders: [],
   }),
   actions: {
@@ -35,11 +34,5 @@ export const useMainStore = defineStore('main', {
     clearCart() {
       this.items = [];
     },
-    setDiscountedPrice(discountedPrice) {
-      this.discountedPrice = discountedPrice;
-    },
-    pushOrder(orderData) {
-      this.orders = orderData
-    }
   },
 });

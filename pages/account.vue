@@ -11,7 +11,7 @@ onMounted(async () => {
     try {
         const { data, error } = await supabase.auth.getSession(); // get session status from local cookies
 
-        if (data.session.user.user_metadata.role == 'admin') {
+        if (data.session.user.user_metadata.role == 'admin') {  // Only access to regular users
             navigateTo("/admin")
             // console.log('this user is admin')
         } else {
@@ -21,7 +21,6 @@ onMounted(async () => {
             email.value = data.session.user.identities[0].email // Display registered email
             auth.value = data.session.user.role // Display account status
             // console.log('this user is regular')
-            // console.log(data.session.user)
         }
     } catch (error) {
         console.log(error);

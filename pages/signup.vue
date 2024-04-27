@@ -52,7 +52,7 @@ watch(user, () => {
 <template>
     <div>
         <!--Form Body-->
-        <!--will only render when not Authenticated-->
+        <!--will only render when no user exist-->
         <div v-if="dataview"
             class="p-1 md:p-10 1my-5 mt-32 flex-col justify-center mx-auto h-fit w-11/12 bg-zinc-100 dark:bg-zinc-900 rounded-md shadow-inner">
             <h1 class="text-3xl md:text-5xl text-center font-bold p-2">Sign Up</h1>

@@ -11,7 +11,6 @@ const addToCart = (product) => {
 </script>
 <template>
     <div>
-        <!-- <Nav /> -->
         <v-container v-if="product" class="mt-20">
             <v-row justify="center">
                 <v-col cols="11" md="7">
@@ -51,7 +50,6 @@ const addToCart = (product) => {
 export default {
     data() {
         return {
-            // product: null,
             product: null,
         };
     },

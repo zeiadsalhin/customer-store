@@ -41,12 +41,8 @@
 import Swal from 'sweetalert2'
 
 export default {
-    props: {
-        // products: Array,
-    },
     data() {
         return {
-            // products: null,
             products: this.data,
         }
     },
@@ -60,7 +56,7 @@ export default {
             try {
                 const { data, error } = await supabase.from('Products').select();
 
-                console.log('Products:', data);
+                // console.log('Products:', data);
                 this.products = data
 
             } catch (error) {

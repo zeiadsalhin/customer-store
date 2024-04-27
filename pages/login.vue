@@ -28,7 +28,7 @@ watch(user, () => {
 <template>
     <div>
         <!--Login Form Body-->
-        <!--will only render when Authenticated-->
+        <!--will only render when no user exist-->
         <div v-if="dataview"
             class="p-1 md:p-5 md:my-20 mt-32 flex-col justify-center mx-auto w-11/12 h-fit shadow-2xl rounded-md">
             <h1 class="text-3xl md:text-5xl text-center font-bold p-5">Log in</h1>

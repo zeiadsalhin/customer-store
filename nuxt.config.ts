@@ -23,7 +23,6 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@pinia/nuxt',
     '@nuxtjs/supabase',
-    // 'nuxt-paypal',
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
         // @ts-expect-error
@@ -39,9 +38,6 @@ export default defineNuxtConfig({
       },
     },
   },
-  // paypal: {
-  //   clientId: import.meta.env.PAYPAL,
-  // },
   supabase: {
     // Options
     redirectOptions: {
@@ -52,13 +48,5 @@ export default defineNuxtConfig({
       cookieRedirect: false,
     }
   }
-  // font
-  // googleFonts: {
-  //   families: {
-  //     Roboto: [300, 400, 900],
-      
-  //   },
-  //   display: 'swap'
-  // },
 })
 

@@ -1,10 +1,9 @@
 <template>
     <div>
-        <!-- <Nav /> -->
-        <Carousel :sale_items="sale_items" />
+        <Carousel />
         <v-container>
             <h1 class="text-3xl p-5">Check out</h1>
-            <ProductSlider :products="products" />
+            <ProductSlider />
             <Newsletter />
         </v-container>
         <Footer />
@@ -12,15 +11,10 @@
 </template>
 <script>
 export default {
-    async created() {
-        // this.sale_items = await useAsyncData(() => queryContent('/products').where({ onSale: true }).findOne());
-        // this.products = await useAsyncData(() => queryContent('/products').findOne());
-
-    },
     data() {
         return {
-            products: null,
-            sale_items: null
+            // products: null,
+            // sale_items: null
         }
     },
     methods: {

@@ -113,24 +113,6 @@ async function InsertProduct() {
     }
 }
 
-
-// fetch image
-const getimage = async () => {
-    try {
-        const { data, error } = supabase
-            .storage
-            .from('products_images')
-            .getPublicUrl(`${file}`)
-        if (error) {
-            console.error('Error:', error.message);
-        } else {
-            console.log('Success', data.publicUrl);
-        }
-    } catch (error) {
-        console.error('Error:', error.message);
-    }
-};
-
 </script>
 <template>
     <div>
