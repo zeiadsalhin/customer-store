@@ -12,7 +12,7 @@ const cartItems = computed(() => mainStore.items);
             </nuxt-link>
             <nuxt-link to="/">
                 <v-toolbar-title class="mr-10">
-                    <h1 class="font-semibold text-xl">E-commerce</h1>
+                    <h1 class="font-semibold text-xl">Sheout shop</h1>
                 </v-toolbar-title>
             </nuxt-link>
             <v-spacer />
