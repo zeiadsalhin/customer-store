@@ -30,7 +30,7 @@
         <v-carousel-item v-else>
             <div class="h-full flex justify-center p-10">
                 <div class="m-10 p-5 bg-zinc-900 my-auto shadow-sm">
-                    <div class="flex justify-center p-5"><v-progress-circular color="dark-blue"
+                    <div class="flex justify-center text-white p-5"><v-progress-circular color="dark-blue"
                             indeterminate></v-progress-circular>
                     </div>
                 </div>

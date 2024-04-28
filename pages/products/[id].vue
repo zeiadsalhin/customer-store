@@ -8,6 +8,28 @@ const addToCart = (product) => {
     mainStore.addToCart(product);
 
 };
+
+const supabase = useSupabaseClient()
+const user = useSupabaseUser()
+const admin = ref(false)
+
+// Display delete button for admin only 
+onMounted(async () => {
+    try {
+        const { data, error } = await supabase.auth.getSession(); // get session status from local cookies
+
+        if (data.session.user.user_metadata.role == 'admin') {  // access only for admins
+            admin.value = true
+        } else {
+            admin.value = false
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
+});
+
+
 </script>
 <template>
     <div>
@@ -37,6 +59,9 @@ const addToCart = (product) => {
                         To Cart</v-btn>
                     <v-btn @click="addToCart(product), navigateTo('/checkout')" min-height="45" min-width="120"
                         class="m-2" color="lighten-gray">Buy Now</v-btn>
+                    <v-btn v-if="admin" @click="DeleteProducts" min-height="45" min-width="150" class="m-2"
+                        color="red-darken-4">Delete
+                        product</v-btn>
                 </v-col>
             </v-row>
         </v-container>
@@ -70,9 +95,50 @@ export default {
                     .eq('id', `${productId}`)
 
                 this.product = data[0]
+                // console.log(this.product.name)
 
             } catch (error) {
                 console.error('Error fetching products:', error.message);
+            }
+        },
+
+        // Delete product by admin
+        async DeleteProducts() {
+            const supabase = useSupabaseClient()
+            try {
+                const route = useRoute()
+                const productId = parseInt(route.params.id);
+                const { error } = await supabase
+                    .from('Products')
+                    .delete()
+                    .eq('id', productId)
+
+                // console.log(productId)
+                if (error) {
+                    console.log(error)
+                } else {
+
+                    const { error } = await supabase
+                        .storage
+                        .from('products_images')
+                        .remove([`${this.product.name}`]);
+                    if (error) {
+                        console.log(error)
+                    } else {
+                        // console.log('Deleted image');
+                        Swal.fire({
+                            title: 'Success',
+                            icon: 'success',
+                            text: 'Product deleted successfully!',
+                            toast: true,
+                            timer: 2000,
+                            showConfirmButton: false,
+                        }).then(() => { navigateTo('/') })
+                    }
+                }
+
+            } catch (error) {
+                console.log(error)
             }
         },
 

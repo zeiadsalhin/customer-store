@@ -28,9 +28,9 @@ async function InsertProduct() {
         const { data: uploadData, error: uploadError } = await supabase
             .storage
             .from('products_images')
-            .upload(`${file.name}`, file, {
+            .upload(`${product.value.name}/${file.name}`, file, {
                 cacheControl: '3600',
-                upsert: false
+                upsert: true
             });
 
         if (uploadError) {
@@ -47,7 +47,7 @@ async function InsertProduct() {
             const { data: publicUrlData, error: publicUrlError } = await supabase
                 .storage
                 .from('products_images')
-                .getPublicUrl(`${file.name}`);
+                .getPublicUrl(`${product.value.name}/${file.name}`);
 
             if (publicUrlError) {
                 Swal.fire({

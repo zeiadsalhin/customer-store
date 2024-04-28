@@ -12,7 +12,7 @@
                 </v-img>
                 <v-card-title class="text-md-body-1 font-weight-bold">{{
                     p.name
-                    }}</v-card-title>
+                }}</v-card-title>
                 <v-card-subtitle class="primary--text pb-3">
                     ${{ p.price }}
                 </v-card-subtitle>
@@ -57,7 +57,7 @@ export default {
                 const { data, error } = await supabase.from('Products').select();
 
                 // console.log('Products:', data);
-                this.products = data
+                this.products = data.slice().reverse()
 
             } catch (error) {
                 console.error('Error fetching products:', error.message);
