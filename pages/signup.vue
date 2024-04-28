@@ -54,9 +54,9 @@ watch(user, () => {
         <!--Form Body-->
         <!--will only render when no user exist-->
         <div v-if="dataview"
-            class="p-1 md:p-10 1my-5 mt-32 flex-col justify-center mx-auto h-fit w-11/12 bg-zinc-100 dark:bg-zinc-900 rounded-md shadow-inner">
+            class="p-1 md:p-10 1my-5 mt-32 flex-col justify-center mx-auto h-fit w-11/12 rounded-md shadow-inner">
             <h1 class="text-3xl md:text-5xl text-center font-bold p-2">Sign Up</h1>
-            <div class="w-1/4 h-1 mt-5 rounded-xl mx-auto bg-gray-600 dark:bg-gray-900"></div>
+            <div class="w-1/4 h-1 mt-5 rounded-xl mx-auto bg-gray-600 dark:bg-gray-9010"></div>
             <form id="form" class="p-5 text-center mx-auto justify-center flex-col" @submit.prevent="signUpNewUser">
                 <!--Display error message if any-->
                 <p class="text-red-500" v-if="errMsg">{{ errMsg }}</p>
@@ -97,7 +97,7 @@ watch(user, () => {
                 </span>
                 <!--Submit button-->
                 <button id="submitbtn" @click="" type="submit"
-                    class="px-5 py-2 w-32 rounded-md hover:cursor-pointer dark:bg-gray-600 hover:bg-gray-500 hover:text-gray-50">
+                    class="px-5 py-2 w-32 rounded-md hover:cursor-pointer bg-gray-500 text-white hover:bg-gray-600 hover:text-gray-50">
                     Sign Up
                 </button>
                 <!--separator-->
@@ -109,7 +109,7 @@ watch(user, () => {
                 <!--navigate to login page-->
                 <p class="m-5 text-center">Already have an account?</p>
                 <NuxtLink to="/login" onclick=""
-                    class="text-center mx-auto flex w-48 justify-center px-5 py-2 rounded-md hover:cursor-pointer dark:bg-gray-800 hover:bg-gray-600 ">
+                    class="text-center mx-auto flex w-48 justify-center px-5 py-2 rounded-md hover:cursor-pointer dark:bg-gray-800 text-white hover:bg-gray-600 ">
                     login</NuxtLink>
             </form>
             <!--End of body-->

@@ -7,15 +7,16 @@ const cartItems = computed(() => mainStore.items);
 <template>
     <div>
         <v-app-bar color="gray" :elevation="2" app>
-            <nuxt-link to="/" class="md:ml-5">
-                <v-icon size="30" class="p-6">mdi-home</v-icon>
-            </nuxt-link>
             <nuxt-link to="/">
-                <v-toolbar-title class="mr-10">
+                <v-toolbar-title class="p-4">
                     <h1 class="font-semibold text-xl">Sheout shop</h1>
                 </v-toolbar-title>
             </nuxt-link>
             <v-spacer />
+            <nuxt-link to="/">
+                <v-btn class="mr-md-2" icon>
+                    <v-icon size="20">mdi-home</v-icon></v-btn>
+            </nuxt-link>
             <nuxt-link to="/admin">
                 <v-btn class="mr-md-2" icon>
                     <v-icon size="20">mdi-account-outline</v-icon></v-btn>

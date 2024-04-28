@@ -54,7 +54,7 @@ watch(user, () => {
 
                 <!--Submit button-->
                 <button @click="" type="submit"
-                    class="px-5 m-5 py-2 w-32 rounded-md hover:cursor-pointer bg-gray-600 hover:bg-gray-500 hover:text-gray-50">
+                    class="px-5 m-5 py-2 w-32 rounded-md hover:cursor-pointer dark:bg-gray-600 text-white hover:bg-gray-500 hover:text-gray-50">
                     Log in
                 </button>
                 <!--Return to Sign Up page-->
