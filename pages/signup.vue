@@ -6,6 +6,7 @@ const errMsg = ref()
 const displayname = ref('')
 const email = ref('')
 const password = ref('')
+const phone = ref('')
 const dataview = ref()
 async function signUpNewUser() { // Registration new user
     try {
@@ -17,11 +18,12 @@ async function signUpNewUser() { // Registration new user
                     first_name: displayname.value,
                     // last_name: 'second name',
                     // role: 'user',
+                    phone: phone.value,
                 },
             }
         })
 
-        if (error) throw error; // throw console error
+        if (error) { throw error }; // throw console error
         // successMsg.value = 'Success'
         console.log('Signed up successfully')
         Swal.fire({
@@ -62,8 +64,7 @@ watch(user, () => {
                 <p class="text-red-500" v-if="errMsg">{{ errMsg }}</p>
                 <div class="form md:flex justify-center">
                     <label class="p-3 text-md md:text-xl text-right md:mr-14 mx-6">Name</label>
-                    <input @change="changed" id="name" type="name" v-model="displayname" @input="checkname"
-                        spellcheck="false"
+                    <input id="name" type="name" v-model="displayname" spellcheck="false"
                         class="bg-gray-300 text-black h-fit my-auto p-1 md:p-2 rounded-md focus:outline-none border-2  w-2/3 md:w-1/4 "
                         required />
                 </div>
@@ -72,7 +73,7 @@ watch(user, () => {
 
                 <div class="form mt-3 md:flex justify-center">
                     <label class="px-4 py-3 text-md md:text-xl md:mr-20 mx-6">Email</label>
-                    <input id="email" v-model="email" @input="checkemail" spellcheck="false"
+                    <input id="email" v-model="email" spellcheck="false"
                         class="bg-gray-300 text-black h-fit my-auto p-1 md:p-2 rounded-md focus:outline-none border-2  w-2/3 md:w-1/4 "
                         type="email" required />
 
@@ -80,9 +81,16 @@ watch(user, () => {
                 <!--Error Message email-->
                 <p id="errore" class="hidden text-sm text-red-700">Please Check your Email</p>
 
+                <div class="form mt-3 md:flex justify-center">
+                    <label class="px-4 py-3 text-md md:text-xl md:mr-20 mx-6">Phone</label>
+                    <input id="phone" v-model="phone" spellcheck="false"
+                        class="bg-gray-300 text-black h-fit my-auto p-1 md:p-2 rounded-md focus:outline-none border-2  w-2/3 md:w-1/4 "
+                        type="number" required />
+                </div>
+
                 <div class="form mt-3 mb-5 md:flex justify-center">
                     <label class="py-3 text-md md:text-xl text-center md:mr-5 mx-6">Password</label>
-                    <input id="password" v-model="password" @input="checkpassword"
+                    <input id="password" v-model="password"
                         class="bg-gray-300 text-black h-fit my-auto p-1 md:p-2 rounded-md focus:outline-none border-2  w-2/3 md:w-1/4 "
                         type="password" required />
 

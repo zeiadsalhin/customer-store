@@ -4,7 +4,7 @@ const supabase = useSupabaseClient()
 const user = useSupabaseUser()
 const dataview = ref()
 const name = ref()
-const id = ref()
+const phone = ref()
 const email = ref()
 const auth = ref()
 onMounted(async () => {
@@ -17,7 +17,7 @@ onMounted(async () => {
         } else {
             dataview.value = true
             name.value = data.session.user.identities[0].identity_data.first_name // Display registered username
-            id.value = data.session.user.identities[0].user_id // Display registered id
+            phone.value = data.session.user.identities[0].identity_data.phone// Display registered id
             email.value = data.session.user.identities[0].email // Display registered email
             auth.value = data.session.user.role // Display account status
             // console.log('this user is regular')
@@ -48,24 +48,26 @@ async function LogOut() {
 }
 </script>
 <template>
-    <div v-if="dataview" class="mt-20 md:w-1/2 bg-zinc-900 p-10 text-center mx-auto text-white">
-        <p class="font-semibold text-3xl">Welcome, {{ name }}</p>
-        <div class="icon p-5"><v-icon size="100">mdi-account</v-icon></div>
-        <v-btn @click="LogOut" min-height="40" min-width="120" class="m-5" color="grey-darken-3">Logout</v-btn>
+    <div>
+        <div v-if="dataview" class="mt-20 md:w-1/2 bg-zinc-900 p-10 text-center mx-auto text-white">
+            <p class="font-semibold text-3xl">Welcome, {{ name }}</p>
+            <div class="icon p-5"><v-icon size="100">mdi-account</v-icon></div>
+            <v-btn @click="LogOut" min-height="40" min-width="120" class="m-5" color="grey-darken-3">Logout</v-btn>
 
-        <div class="w-full p-2 space-x-2">
-            <label for="id" class="text-xl">UserID:</label>
-            <label class="text-lg">{{ id }}</label>
-        </div>
-        <div class="w-full py-2 flexs space-x-10">
-            <label for="email" class="text-xl">Email:</label>
-            <label class="text-lg">{{ email }}</label>
-        </div>
-        <div class="w-full py-2 space-x-10">
-            <label for="auth" class="text-xl">Account:</label>
-            <label class="text-lg">{{ auth }}</label>
-        </div>
+            <div class="w-full p-2 space-x-10">
+                <label for="id" class="text-xl">Phone:</label>
+                <label class="text-lg">{{ phone }}</label>
+            </div>
+            <div class="w-full py-2 flexs space-x-10">
+                <label for="email" class="text-xl">Email:</label>
+                <label class="text-lg">{{ email }}</label>
+            </div>
+            <div class="w-full py-2 space-x-10">
+                <label for="auth" class="text-xl">Account:</label>
+                <label class="text-lg">{{ auth }}</label>
+            </div>
 
 
+        </div>
     </div>
 </template>
