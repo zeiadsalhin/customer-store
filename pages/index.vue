@@ -1,6 +1,7 @@
 <template>
     <div>
         <Carousel />
+        Test text
         <v-container>
             <h1 class="text-3xl p-5">Check out</h1>
             <ProductSlider />
