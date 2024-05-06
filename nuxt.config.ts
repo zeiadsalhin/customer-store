@@ -5,7 +5,7 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      title: 'E-Commerce',
+      title: 'SheOut Shop',
   meta: [
     { name: 'description', content: 'Welcome to latest E-commerce platform with Safest and Secured Payment and Global Shipping' }
   ],
