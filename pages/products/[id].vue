@@ -55,6 +55,8 @@ onMounted(async () => {
                     <p class="text-h5 mb-7">
                         Price: {{ product.price + ' $' }}
                     </p>
+                    <Colors />
+                    <br />
                     <v-btn @click="addToCart(product)" min-height="45" min-width="150" class="m-2" color="primary">Add
                         To Cart</v-btn>
                     <v-btn @click="addToCart(product), navigateTo('/checkout')" min-height="45" min-width="120"
@@ -63,7 +65,11 @@ onMounted(async () => {
                         color="red-darken-4">Delete
                         product</v-btn>
                 </v-col>
+
             </v-row>
+            <Review />
+            <div class="h-1 w-full bg-zinc-800 rounded-full mt-5"></div>
+            <AllReviews />
         </v-container>
         <br /><br />
         <Footer />
