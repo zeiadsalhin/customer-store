@@ -11,6 +11,9 @@
 
             <v-chip class="text-blue"><v-icon size="x-small">mdi-circle</v-icon>Blue</v-chip>
             <v-chip class="text-grey"><v-icon size="x-small">mdi-circle</v-icon>Grey</v-chip>
+            <v-chip class="text-red"><v-icon size="x-small">mdi-circle</v-icon>Red</v-chip>
+            <v-chip class="text-black bg-white"><v-icon size="x-small">mdi-circle</v-icon>Black</v-chip>
+            <v-chip class="text-yellow"><v-icon size="x-small">mdi-circle</v-icon>Yellow</v-chip>
         </v-chip-group>
     </div>
 </template>
