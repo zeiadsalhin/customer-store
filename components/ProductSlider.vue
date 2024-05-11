@@ -5,14 +5,13 @@
                 <v-img height="200" :src="p.image" cover>
                     <template #placeholder>
                         <v-row class="fill-height" justify="center" align="center">
-                            <v-progress-circular width="2" size="100" color="primary"
-                                indeterminate></v-progress-circular>
+                            <v-progress-circular width="2" size="100" color="gray" indeterminate></v-progress-circular>
                         </v-row>
                     </template>
                 </v-img>
                 <v-card-title class="text-md-body-1 font-weight-bold">{{
                     p.name
-                }}</v-card-title>
+                    }}</v-card-title>
                 <v-card-subtitle class="primary--text pb-3">
                     ${{ p.price }}
                 </v-card-subtitle>

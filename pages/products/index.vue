@@ -10,7 +10,7 @@
                 <div v-for="(p, i) in filteredProducts" :key="`product${p.id}-${i}`" class="w-fit">
                     <v-fade-transition>
                         <v-card :to="'/products/' + p.id" color="surface" class="mb-5 mx-auto ml-6">
-                            <v-img :src="p.image1" width="300" height="200" cover>
+                            <v-img :src="p.image" width="300" height="200" cover>
                                 <template #placeholder>
                                     <v-row class="fill-height" justify="center" align="center">
                                         <v-progress-circular width="2" size="100" color="gray"
@@ -49,7 +49,7 @@
                             <v-img :src="p.image" width="300" height="200" cover>
                                 <template #placeholder>
                                     <v-row class="fill-height" justify="center" align="center">
-                                        <v-progress-circular width="2" size="100" color="primary"
+                                        <v-progress-circular width="2" size="100" color="gray"
                                             indeterminate></v-progress-circular>
                                     </v-row>
                                 </template>
