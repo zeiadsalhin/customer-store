@@ -9,7 +9,8 @@
                                 indeterminate></v-progress-circular>
                         </div> -->
                         <div class="mt-4">
-                            <h1 class="text-3xl font-semibold p-2 text-center animate-pulse">SheOut Store</h1>
+                            <h1 class="text-3xl font-semibold p-2 text-center animate-pulse text-zinc-300">SheOut Store
+                            </h1>
                         </div>
                     </div>
                 </div>
@@ -22,7 +23,7 @@
 <script setup>
 const loading = ref(true);
 setTimeout(() => {
-    loading.value = false
+    // loading.value = false
 }, 2000);
 </script>
 <style>
