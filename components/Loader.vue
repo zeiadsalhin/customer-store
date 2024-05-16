@@ -23,7 +23,7 @@
 <script setup>
 const loading = ref(true);
 setTimeout(() => {
-    // loading.value = false
+    loading.value = false
 }, 2000);
 </script>
 <style>
