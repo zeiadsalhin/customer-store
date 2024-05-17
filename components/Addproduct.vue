@@ -6,6 +6,7 @@ const product = ref({
     name: '',
     price: null,
     description: '',
+    stock: true,
     image: null
 });
 // Add product
@@ -68,7 +69,8 @@ async function InsertProduct() {
                         name: product.value.name,
                         price: product.value.price,
                         description: product.value.description,
-                        image: publicUrl
+                        image: publicUrl,
+                        stock: product.value.stock
                     });
 
                 if (insertError) {

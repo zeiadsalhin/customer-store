@@ -1,15 +1,25 @@
 <script setup>
-import { useMainStore } from '@/store';
 
+
+import { useMainStore } from '@/store';
+import { useTheme } from 'vuetify'
 const mainStore = useMainStore();
 const cartItems = computed(() => mainStore.items);
+const theme = useTheme();
+const Mode = ref(theme.global.name.value);
+
+const toggleTheme = () => {
+    theme.global.name.value = Mode.value === 'dark' ? 'light' : 'dark';
+    Mode.value = theme.global.name.value;
+    localStorage.scheme === 'light' ? localStorage.scheme = 'dark' : localStorage.scheme = 'light';
+};
 </script>
 <template>
     <div>
         <v-app-bar color="gray" :elevation="2" app>
             <nuxt-link to="/">
                 <v-toolbar-title class="p-4">
-                    <h1 class="font-semibold text-xl">Sheout shop</h1>
+                    <h1 class="font-bold text-xl">Sheout shop</h1>
                 </v-toolbar-title>
             </nuxt-link>
             <v-spacer />
@@ -32,7 +42,10 @@ const cartItems = computed(() => mainStore.items);
             <v-btn v-else nuxt to="/cart" icon>
                 <v-icon size="20">mdi-cart-outline</v-icon>
             </v-btn>
-            <v-btn @click="toggleTheme" icon>
+            <v-btn v-if="Mode == 'dark'" @click="toggleTheme" icon>
+                <v-icon size="20">mdi-brightness-2</v-icon>
+            </v-btn>
+            <v-btn v-else @click="toggleTheme" icon>
                 <v-icon size="20">mdi-brightness-7</v-icon>
             </v-btn>
         </v-app-bar>
@@ -41,9 +54,11 @@ const cartItems = computed(() => mainStore.items);
 <script>
 export default {
     methods: {
-        toggleTheme() {
-            localStorage.scheme === 'light' ? localStorage.scheme = 'dark' : localStorage.scheme = 'light';
-            this.$router.go()
+        toggleTheme2() {
+            // localStorage.scheme === 'light' ? localStorage.scheme = 'dark' : localStorage.scheme = 'light';
+            // this.$router.go()
+            this.theme.global.current.dark ? 'myCustomLightTheme' : 'myCustomdarkTheme';
+            this.$vuetify.theme.dark ? console.log('dark') : console.log('light');
         },
     },
 };

@@ -67,6 +67,13 @@ onMounted(async () => {
                 </v-col>
 
             </v-row>
+            <div class="added mt-5 px-5">
+                <p class="">Available from:</p>
+                <p class="text-left opacity-80">
+                    {{ product.created_at.slice(0, 10) }}
+                    {{ product.created_at.slice(11, 16) }}
+                </p>
+            </div>
             <Review />
             <div class="h-1 w-full bg-zinc-800 rounded-full mt-5"></div>
             <AllReviews />

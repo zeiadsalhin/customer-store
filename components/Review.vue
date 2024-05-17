@@ -1,5 +1,6 @@
 <script setup>
-
+import { useTheme } from 'vuetify'
+const theme = useTheme();
 </script>
 <template>
     <div class="p-4 mt-10 ">
@@ -8,14 +9,16 @@
 
             <div class="name flex space-x-5 p-2 md:w-1/2 mx-auto">
                 <label for="name">Name:</label>
-                <input type="text" id="name" class="w-full p-2 text-white bg-zinc-700 rounded-sm" v-model="review.name"
-                    required>
+                <input type="text" id="name"
+                    :class="theme.global.current.value.dark ? 'bg-zinc-700' : 'bg-zinc-200 text-black'"
+                    class="w-full p-2 bg-zinc-700 rounded-sm" v-model="review.name" required>
             </div>
 
             <div class="review flex space-x-2 p-2 md:w-1/2 mx-auto">
                 <label for="text">Review:</label>
-                <textarea cols="10" rows="5" id="text" class="w-full p-2 text-white bg-zinc-700 rounded-sm"
-                    v-model="review.text" required></textarea>
+                <textarea cols="10" rows="5" id="text"
+                    :class="theme.global.current.value.dark ? 'bg-zinc-700' : 'bg-zinc-200'"
+                    class="w-full p-2 bg-zinc-700 rounded-sm" v-model="review.text" required></textarea>
             </div>
 
             <div class="rating flex p-2 md:w-1/2 mx-auto">
@@ -25,8 +28,8 @@
                     density="compact" v-model="review.rating"></v-rating>
             </div>
 
-            <button type="submit"
-                class="w-48 flex justify-center mx-auto p-2 mt-10 bg-zinc-900 text-white rounded-sm">Submit
+            <button type="submit" :class="theme.global.current.value.dark ? 'bg-zinc-900' : 'bg-zinc-500'"
+                class="w-48 flex justify-center mx-auto p-2 ring-zinc-400 focus:ring-4 mt-10 bg-zinc-900 text-white rounded-sm">Submit
                 Review</button>
         </form>
     </div>
