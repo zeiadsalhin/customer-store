@@ -24,7 +24,7 @@
 const loading = ref(true);
 setTimeout(() => {
     loading.value = false
-}, 1000);
+}, 1500);
 </script>
 <style>
 .fixed {
